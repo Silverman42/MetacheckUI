@@ -1,0 +1,16 @@
+.file-container {
+    box-sizing: border-box;
+    @apply flex h-10 w-full rounded-md border-2 dark:border-transparent bg-gray-100 dark:bg-primaryBg2 items-center justify-between py-3 px-3 mb-1;
+}
+.file-counter {
+    @apply inline-block w-auto bg-gray-400 dark:bg-primaryBg rounded-lg px-2 py-1 text-xs text-white mr-1;
+}
+.action {
+    @apply py-1 px-2 bg-gray-400 dark:bg-primary-600 rounded text-sm font-bold inline-block w-auto text-white
+}
+.file-name{
+    @apply text-sm text-gray-700 dark:text-primary-200;
+}
+.container:hover .action {
+    @apply bg-gray-500 dark:bg-primary-700
+}

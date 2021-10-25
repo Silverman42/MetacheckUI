@@ -1,0 +1,17 @@
+.input-base, .input-textarea{
+    @apply w-full block border-2 dark:border-transparent bg-gray-100 dark:bg-primaryBg2 rounded-md h-10 hover:border-primary-600;
+    @apply focus:border-primary-600 focus:outline-none p-3 text-gray-700 dark:text-white;
+    @apply focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-800;
+}
+
+.input-textarea{
+    @apply h-auto;
+}
+
+.input-rounded{
+    @apply rounded-full
+}
+
+.input-base:disabled{
+    @apply cursor-not-allowed
+}

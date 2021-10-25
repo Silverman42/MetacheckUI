@@ -1,0 +1,24 @@
+.input-container .label{
+    @apply flex items-center justify-between
+}
+.input-container .label .label-title{
+    @apply text-gray-600 text-sm mb-1 dark:text-gray-400
+}
+
+.input-container .label .label-description{
+    @apply w-7 h-7 rounded-full flex justify-center items-center text-base mb-1 font-bold;
+    @apply text-gray-500 border-2 relative;
+}
+
+.input-container .label .label-description .label-description_text{
+    @apply hidden;
+}
+
+.input-container .label .label-description:hover .label-description_text{
+    top: 120%;
+    @apply absolute inline-block right-0 bg-gray-700 text-gray-100 text-xs p-3 w-52 rounded-md;
+}
+
+.input-container .error{
+    @apply inline-block mt-1 text-red-400 text-xs
+}

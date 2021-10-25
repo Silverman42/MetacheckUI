@@ -1,0 +1,29 @@
+body{
+  @apply bg-primary-50;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.zoom-leave-active,
+.zoom-enter-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.zoom-enter,
+.zoom-leave-to {
+  transform: scale(0.98, 0.98);
+  opacity: 0;
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: all .2s ease-in;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
