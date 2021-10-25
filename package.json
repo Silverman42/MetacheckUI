@@ -15,6 +15,7 @@
     "@nuxtjs/proxy": "^2.1.0",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
+    "vue-code-highlight": "^0.7.8",
     "vue-custom-scrollbar": "^1.4.1",
     "vue-feather-icons": "^5.1.0"
   },

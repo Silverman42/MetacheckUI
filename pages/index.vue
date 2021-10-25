@@ -101,7 +101,7 @@
             px-8
             dark:border-primaryBg2
             w-full
-            lg:w-5/12
+            lg:w-6/12
           "
         >
           <div class="mb-10">
@@ -154,7 +154,7 @@
             </div>
           </div>
         </section>
-        <section class="lg:min-h-screen px-6 w-full lg:w-3/12"></section>
+        <section class="lg:min-h-screen px-6 w-full lg:w-2/12"></section>
       </div>
     </div>
   </div>
@@ -194,4 +194,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+@import '@/components/Preview/CodeHigh.css';
+</style>
