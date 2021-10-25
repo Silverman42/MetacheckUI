@@ -11,7 +11,6 @@
 
 <script>
 import CustomScrollbar from 'vue-custom-scrollbar'
-import 'vue-custom-scrollbar/dist/vueScrollbar.css'
 export default {
   components: {
     CustomScrollbar,
@@ -19,8 +18,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.scrollbar {
-  @apply flex w-full items-center overflow-x-auto pb-8;
-}
-</style>
+<style scoped></style>

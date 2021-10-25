@@ -1,6 +1,8 @@
 <template>
   <button
     class="btn"
+    role="button"
+    :aria-pressed="isPressed"
     :type="type"
     :class="{
       'btn-block': hasFullWidth,
@@ -69,6 +71,10 @@ export default {
       type: String,
       default: '',
     },
+    pressed: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     disabledState() {
@@ -76,6 +82,9 @@ export default {
         return true
       }
       return false
+    },
+    isPressed() {
+      return this.pressed
     },
   },
   methods: {

@@ -154,13 +154,14 @@
             </div>
           </div>
         </section>
-        <section class="lg:min-h-screen px-6 w-full lg:w-2/12"></section>
+        <section class="lg:min-h-screen px-6 w-full lg:w-3/12"></section>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import 'vue-custom-scrollbar/dist/vueScrollbar.css'
 export default {
   data() {
     return {
@@ -196,4 +197,7 @@ export default {
 
 <style>
 @import '@/components/Preview/CodeHigh.css';
+.scrollbar {
+  @apply flex w-full items-center overflow-x-auto pb-8;
+}
 </style>
