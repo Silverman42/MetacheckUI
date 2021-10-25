@@ -1,10 +1,16 @@
 <template>
-  <preview-code-card>
-    {{ getTitle }}
-    {{ getMetaData }}
-    {{ getFacebookTags }}
-    {{ getTwitterTags }}
-  </preview-code-card>
+  <div>
+    <p class="dark:text-gray-300 text-sm mb-8">
+      Copy the generated HTML code and place it between the
+      <code class="text-gray-500">head</code> tag of your webpage
+    </p>
+    <preview-code-card>
+      {{ getTitle }}
+      {{ getMetaData }}
+      {{ getFacebookTags }}
+      {{ getTwitterTags }}
+    </preview-code-card>
+  </div>
 </template>
 
 <script>

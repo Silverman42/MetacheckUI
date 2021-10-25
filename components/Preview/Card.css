@@ -1,5 +1,5 @@
 .card-heading{
-    @apply text-gray-700 dark:text-gray-500 font-semibold mb-4;
+    @apply text-gray-700 dark:text-gray-300 font-semibold mb-4;
 }
 
 .card{

@@ -1,8 +1,8 @@
 <template>
   <div>
     <p class="dark:text-gray-300 text-sm mb-8">
-      The code snippet below is useful for metatag structuring in metadata npm
-      packages like
+      Copy and paste the snippet below to the head object of your JAMstack or
+      SPA webpage, if you are using a library like
       <a
         href="https://vue-meta.nuxtjs.org/"
         target="_blank"

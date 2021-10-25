@@ -1,46 +1,6 @@
 <template>
   <div class="font-sans dark">
-    <header
-      class="py-6 w-full border-b dark:border-primaryBg2 dark:bg-primaryBg"
-    >
-      <nav class="mx-auto max-w-6xl flex px-8 items-center justify-between">
-        <a href="#">
-          <img src="" class="w-10" alt="metacheck logo" />
-        </a>
-        <div>
-          <input-base></input-base>
-        </div>
-        <ul
-          class="
-            inline-flex
-            items-center
-            fixed
-            bottom-0
-            w-full
-            left-0
-            py-4
-            lg:relative lg:w-auto
-            justify-center
-            md:justify-end
-          "
-        >
-          <li class="mr-10">
-            <a
-              href="#"
-              class="dark:text-primary-100 dark:hover:text-primary-300"
-              >Guide</a
-            >
-          </li>
-          <li>
-            <a
-              class="dark:text-primary-100 dark:hover:text-primary-300"
-              href="#"
-              >Metainfo</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <navbar />
     <div class="dark:bg-primaryBg min-h-screen">
       <div
         class="
@@ -154,7 +114,9 @@
             </div>
           </div>
         </section>
-        <section class="lg:min-h-screen px-6 w-full lg:w-3/12"></section>
+        <section class="lg:min-h-screen py-8 px-8 w-full lg:w-3/12">
+          <bottom />
+        </section>
       </div>
     </div>
   </div>
