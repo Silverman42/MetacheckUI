@@ -1,7 +1,11 @@
 <template>
   <div class="mb-14">
-    <figure class="mb-5">
-      <img src="" alt="" />
+    <figure class="mb-5 w-32">
+      <img
+        src="/MetaCheck.svg"
+        class="w-full h-auto"
+        alt="metacheck bottom logo"
+      />
     </figure>
     <p class="text-sm text-gray-600 mb-5 dark:text-gray-400">
       Metacheck is a free open-source tool for generating/checking metatags and

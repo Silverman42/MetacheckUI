@@ -1,8 +1,12 @@
 <template>
   <header class="py-6 w-full border-b dark:border-primaryBg2 dark:bg-primaryBg">
     <nav class="mx-auto max-w-6xl flex px-8 items-center justify-between">
-      <a href="#">
-        <img src="" class="w-10" alt="metacheck logo" />
+      <a class="w-14 block" href="#">
+        <img
+          src="/MetaCheck_single.svg"
+          class="w-full h-auto"
+          alt="metacheck logo"
+        />
       </a>
       <div class="w-6/12 lg:w-5/12 flex items-stretch">
         <input-base></input-base>
