@@ -1,5 +1,15 @@
 <template>
-  <header class="py-6 w-full border-b dark:border-primaryBg2 dark:bg-primaryBg">
+  <header
+    class="
+      py-3
+      sticky
+      top-0
+      w-full
+      border-b
+      z-30
+      dark:border-primaryBg2 dark:bg-primaryBg
+    "
+  >
     <nav class="mx-auto max-w-6xl flex px-8 items-center justify-between">
       <a class="w-14 block" href="#">
         <img

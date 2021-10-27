@@ -22,6 +22,9 @@
             hidden
             lg:block
             w-4/12
+            lg:sticky lg:top-20
+            top-0
+            lg:self-start
           "
         >
           <h2
@@ -114,7 +117,15 @@
             </div>
           </div>
         </section>
-        <section class="lg:min-h-screen py-8 px-8 w-full lg:w-3/12">
+        <section
+          class="
+            lg:min-h-screen
+            py-8
+            px-8
+            w-full
+            lg:w-3/12 lg:sticky lg:top-20 lg:self-start
+          "
+        >
           <bottom />
         </section>
       </div>
