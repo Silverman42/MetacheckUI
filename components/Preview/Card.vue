@@ -1,7 +1,27 @@
 <template>
-  <div>
-    <h4 v-if="hasHeading === true" class="card-heading">{{ headingText }}</h4>
-    <div class="card">
+  <div class="mb-14 cursor-pointer">
+    <span
+      class="
+        inline-block
+        w-auto
+        rounded-3xl
+        py-2
+        px-4
+        text-sm
+        mb-4
+        border
+        dark:border-gray-800
+      "
+    >
+      <span v-if="hasHeading === true" class="card-heading mb-0">
+        {{ headingText }}
+      </span>
+    </span>
+    <div
+      :class="{
+        card: hasLayout === true,
+      }"
+    >
       <slot />
     </div>
   </div>
@@ -17,6 +37,10 @@ export default {
     headingText: {
       type: String,
       default: '',
+    },
+    hasLayout: {
+      type: Boolean,
+      default: true,
     },
   },
 }

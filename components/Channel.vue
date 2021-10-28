@@ -1,6 +1,12 @@
 <template>
   <label class="channel" :for="id" z-index="1">
-    <input :id="id" type="checkbox" name="" />
+    <input
+      :id="id"
+      v-model="checkedChannels"
+      type="checkbox"
+      :value="value"
+      @change="emmitChannels()"
+    />
     <span class="title"><slot /></span>
     <div class="bg"></div>
   </label>
@@ -8,10 +14,28 @@
 
 <script>
 export default {
+  props: {
+    value: {
+      type: String,
+      default: '',
+    },
+    channels: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+  },
   data() {
     return {
       id: '',
+      checkedChannels: this.channels,
     }
+  },
+  watch: {
+    channels(newValue) {
+      this.checkedChannels = newValue
+    },
   },
   mounted() {
     this.id = this.generateId()
@@ -19,6 +43,9 @@ export default {
   methods: {
     generateId() {
       return Math.ceil(Math.random() * 1999999999)
+    },
+    emmitChannels() {
+      this.$emit('toggle', this.checkedChannels)
     },
   },
 }

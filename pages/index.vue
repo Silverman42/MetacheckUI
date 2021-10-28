@@ -2,110 +2,36 @@
   <div class="font-sans dark">
     <navbar />
     <div class="dark:bg-primaryBg min-h-screen">
-      <div
-        class="
-          mx-auto
-          max-w-6xl
-          flex flex-wrap
-          lg:flex-nowrap
-          items-stretch
-          justify-center
-        "
-      >
-        <section
-          class="
-            border-r
-            min-h-screen
-            dark:border-primaryBg2
-            py-8
-            px-8
-            hidden
-            lg:block
-            w-4/12
-            lg:sticky lg:top-20
-            top-0
-            lg:self-start
-          "
-        >
-          <h2
-            class="
-              text-xs
-              dark:text-primary-300
-              text-primary-600
-              font-bold
-              uppercase
-              tracking-widest
-            "
-          >
-            Metadata
-          </h2>
-          <div class="my-8">
-            <input-container label="Title">
-              <input-base></input-base>
-            </input-container>
-          </div>
-          <div class="my-8">
-            <input-container label="Description">
-              <input-textarea></input-textarea>
-            </input-container>
-          </div>
-          <div class="my-8">
-            <input-container label="Image">
-              <input-file></input-file>
-            </input-container>
-          </div>
-        </section>
-        <section
-          class="
-            lg:border-r lg:min-h-screen
-            border-b border-r-0
-            lg:border-b-0
-            py-8
-            px-8
-            dark:border-primaryBg2
-            w-full
-            lg:w-6/12
-          "
-        >
+      <div class="section-container">
+        <metadata />
+        <section class="channel-section">
           <div class="mb-10">
-            <h2
-              class="
-                text-xs
-                dark:text-primary-300
-                text-primary-600
-                font-bold
-                uppercase
-                tracking-widest
-                mb-8
-              "
-            >
-              CHANNELS
-            </h2>
-            <channel-container />
+            <section-header>Channels</section-header>
+            <channel-container @channelToggle="filterChannels($event)" />
           </div>
           <div>
-            <h2
-              class="
-                text-xs
-                dark:text-primary-300
-                text-primary-600
-                font-bold
-                uppercase
-                tracking-widest
-                mb-8
-              "
-            >
-              PREVIEW
-            </h2>
+            <section-header>Preview</section-header>
             <div>
               <tab :tabs="tabs" :default-active-tab="defaultTab">
                 <template #tab-body-webview>
-                  <preview-google></preview-google>
-                  <preview-facebook></preview-facebook>
-                  <preview-twitter></preview-twitter>
-                  <preview-linkedin></preview-linkedin>
-                  <preview-pinterest></preview-pinterest>
-                  <preview-slack></preview-slack>
+                  <preview-google
+                    v-if="filteredChannels.hasOwnProperty('google')"
+                  />
+                  <preview-facebook
+                    v-if="filteredChannels.hasOwnProperty('facebook')"
+                  />
+                  <preview-twitter
+                    v-if="filteredChannels.hasOwnProperty('twitter')"
+                  />
+                  <preview-linkedin
+                    v-if="filteredChannels.hasOwnProperty('linkedin')"
+                  />
+                  <preview-pintrest
+                    v-if="filteredChannels.hasOwnProperty('pinterest')"
+                  />
+                  <preview-slack
+                    v-if="filteredChannels.hasOwnProperty('slack')"
+                  />
                 </template>
                 <template #tab-body-code>
                   <preview-code></preview-code>
@@ -117,17 +43,7 @@
             </div>
           </div>
         </section>
-        <section
-          class="
-            lg:min-h-screen
-            py-8
-            px-8
-            w-full
-            lg:w-3/12 lg:sticky lg:top-20 lg:self-start
-          "
-        >
-          <bottom />
-        </section>
+        <bottom />
       </div>
     </div>
   </div>
@@ -140,8 +56,10 @@ export default {
     return {
       tabs: ['webview', 'code', 'json'],
       defaultTab: 'webview',
+      filteredChannels: {},
     }
   },
+  computed: {},
   mounted() {
     this.setDarkMode()
   },
@@ -164,6 +82,12 @@ export default {
         document.documentElement.classList.remove('dark')
       }
     },
+    filterChannels(channels) {
+      this.filteredChannels = {}
+      for (const channel of channels) {
+        this.$set(this.filteredChannels, `${channel}`, true)
+      }
+    },
   },
 }
 </script>
@@ -172,5 +96,25 @@ export default {
 @import '@/components/Preview/CodeHigh.css';
 .scrollbar {
   @apply flex w-full items-center overflow-x-auto pb-8;
+}
+::selection {
+  @apply dark:bg-primary-600 dark:text-primary-100;
+}
+
+.channel-section {
+  @apply border-b border-r-0 py-8 px-8 dark:border-primaryBg2 w-full;
+}
+
+.section-container {
+  @apply mx-auto max-w-6xl flex flex-wrap items-stretch justify-center;
+}
+
+@screen lg {
+  .channel-section {
+    @apply w-6/12 border-b-0 border-r min-h-screen;
+  }
+  .section-container {
+    @apply flex-nowrap;
+  }
 }
 </style>

@@ -1,5 +1,14 @@
 <template>
-  <div class="mb-14">
+  <section
+    class="
+      lg:min-h-screen
+      py-8
+      px-8
+      w-full
+      pb-14
+      lg:w-3/12 lg:sticky lg:top-20 lg:self-start
+    "
+  >
     <figure class="mb-5 w-32">
       <img
         src="/MetaCheck.svg"
@@ -39,7 +48,7 @@
         >Sylvester Uche Nkeze</a
       >
     </p>
-  </div>
+  </section>
 </template>
 
 <script>

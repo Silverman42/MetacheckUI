@@ -2,7 +2,7 @@
   <header
     class="
       py-3
-      sticky
+      lg:sticky
       top-0
       w-full
       border-b
@@ -10,15 +10,19 @@
       dark:border-primaryBg2 dark:bg-primaryBg
     "
   >
-    <nav class="mx-auto max-w-6xl flex px-8 items-center justify-between">
-      <a class="w-14 block" href="#">
-        <img
-          src="/MetaCheck_single.svg"
-          class="w-full h-auto"
-          alt="metacheck logo"
-        />
-      </a>
-      <div class="w-6/12 lg:w-5/12 flex items-stretch">
+    <nav
+      class="mx-auto max-w-6xl flex flex-wrap px-8 items-center justify-between"
+    >
+      <div class="lg:inline-block block w-full py-3 lg:w-auto">
+        <a class="w-14 block mx-auto" href="#">
+          <img
+            src="/MetaCheck_single.svg"
+            class="w-full h-auto"
+            alt="metacheck logo"
+          />
+        </a>
+      </div>
+      <div class="lg:inline-flex w-full py-3 lg:w-6/12 flex items-stretch">
         <input-base></input-base>
         <action-button :has-full-width="false" size="xs">
           <search-icon size="1.2x"></search-icon>
@@ -36,6 +40,7 @@
           lg:relative lg:w-auto
           justify-center
           md:justify-end
+          dark:bg-primaryBg
         "
       >
         <li class="mr-10">
