@@ -1,6 +1,17 @@
 <template>
   <div class="font-sans dark">
-    <navbar />
+    <navbar>
+      <form id="urlForm" @submit.prevent="getMetaData()"></form>
+      <input-base v-model="url" form="urlForm"></input-base>
+      <action-button
+        type="submit"
+        form="urlForm"
+        :has-full-width="false"
+        size="xs"
+      >
+        <search-icon size="1.2x"></search-icon>
+      </action-button>
+    </navbar>
     <div class="dark:bg-primaryBg min-h-screen">
       <div class="section-container">
         <metadata />
@@ -51,17 +62,24 @@
 
 <script>
 import 'vue-custom-scrollbar/dist/vueScrollbar.css'
+import { SearchIcon } from 'vue-feather-icons'
 export default {
+  components: {
+    SearchIcon,
+  },
   data() {
     return {
       tabs: ['webview', 'code', 'json'],
       defaultTab: 'webview',
       filteredChannels: {},
+      url: 'http://sundev.netlify.app',
+      loading: false,
     }
   },
   computed: {},
   mounted() {
     this.setDarkMode()
+    this.getMetaData()
   },
   methods: {
     saveDarkMode(state = true) {
@@ -87,6 +105,13 @@ export default {
       for (const channel of channels) {
         this.$set(this.filteredChannels, `${channel}`, true)
       }
+    },
+    getMetaData() {
+      this.loading = true
+      this.$axios.get(`/api/fetch?url=${this.url}`).then((response) => {
+        this.loading = false
+        console.log(response.data)
+      })
     },
   },
 }

@@ -15,27 +15,46 @@
     "
   >
     <section-header>Metadata</section-header>
+    <form id="generateMeta" action="" @submit.prevent="generateMetadata"></form>
     <div class="my-8">
       <input-container label="Title">
-        <input-base></input-base>
+        <input-base v-model="title" form="generateMeta"></input-base>
       </input-container>
     </div>
     <div class="my-8">
       <input-container label="Description">
-        <input-textarea></input-textarea>
+        <input-textarea
+          v-model="description"
+          form="generateMeta"
+        ></input-textarea>
       </input-container>
     </div>
     <div class="my-8">
       <input-container label="Image">
-        <input-file></input-file>
+        <input-file @input="getImage($event)"></input-file>
       </input-container>
+    </div>
+    <div class="my-8">
+      <action-button form="generateMeta" type="submit">Generate</action-button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  data() {},
+  data() {
+    return {
+      title: '',
+      description: '',
+      image: '',
+    }
+  },
+  methods: {
+    generateMetadata() {},
+    getImage($event) {
+      console.log($event)
+    },
+  },
 }
 </script>
 

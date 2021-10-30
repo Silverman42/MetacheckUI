@@ -1,5 +1,5 @@
 .btn{
-    @apply px-6 py-3 text-base focus:ring-4 font-bold focus:outline-none w-auto rounded-md shadow-lg inline-flex justify-around items-center;
+    @apply px-6 py-3 text-base focus:ring-4  focus:outline-none w-auto rounded-md shadow-lg inline-flex justify-around items-center;
 }
 
 .btn-rounded{

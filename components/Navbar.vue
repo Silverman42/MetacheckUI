@@ -23,10 +23,7 @@
         </a>
       </div>
       <div class="lg:inline-flex w-full py-3 lg:w-6/12 flex items-stretch">
-        <input-base></input-base>
-        <action-button :has-full-width="false" size="xs">
-          <search-icon size="1.2x"></search-icon>
-        </action-button>
+        <slot />
       </div>
       <ul
         class="
@@ -64,10 +61,17 @@
 </template>
 
 <script>
-import { SearchIcon } from 'vue-feather-icons'
 export default {
-  components: {
-    SearchIcon,
+  components: {},
+  data() {
+    return {
+      url: '',
+    }
+  },
+  methods: {
+    fetchMeta() {
+      this.$emit('searchUrl', this.url)
+    },
   },
 }
 </script>

@@ -47,30 +47,30 @@ export default {
   ],
   netlify: {
     redirects: [
-      // {
-      //   from: '/api/*',
-      //   to: 'https://admin.gasapp.company/:splat',
-      //   status: 200,
-      // },
+      {
+        from: '/api/*',
+        to: 'http://metacheck.herokuapp.com/:splat',
+        status: 200,
+      },
     ],
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios', '@nuxtjs/proxy'],
   axios: {
-    baseURL: 'https://admin.gasapp.company',
+    baseURL: 'http://metacheck.herokuapp.com',
     headers: {
       common: {
         Accept: 'application/json',
       },
     },
-    // proxy: true,
+    proxy: true,
   },
-  // proxy: {
-  //   '/api/': {
-  //     target: 'https://admin.gasapp.company/',
-  //     pathRewrite: { '^/api/': '' },
-  //   },
-  // },
+  proxy: {
+    '/api/': {
+      target: 'http://metacheck.herokuapp.com',
+      pathRewrite: { '^/': '' },
+    },
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
