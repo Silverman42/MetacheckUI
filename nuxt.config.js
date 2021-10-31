@@ -48,7 +48,7 @@ export default {
   netlify: {
     redirects: [
       {
-        from: '/api/*',
+        from: '/*',
         to: 'http://metacheck.herokuapp.com/:splat',
         status: 200,
       },
