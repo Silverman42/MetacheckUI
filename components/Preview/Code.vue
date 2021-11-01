@@ -14,39 +14,54 @@
 </template>
 
 <script>
+import schema from '~/assets/mixins/fetchMetaSchema'
 export default {
+  mixins: [schema],
   computed: {
     getTitle() {
       return `
-      <title>My new home page</title>
+      <title>${this.schema.title}</title>
       `
     },
     getFacebookTags() {
       return `
       <!--Facebook / Opengraph metatags-->
       <meta property="og:type" content="website">
-      <meta property="og:url" content="https://metatags.io/">
-      <meta property="og:title" content="Meta Tags — Preview, Edit and Generate">
-      <meta property="og:description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!">
-      <meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+      <meta property="og:url" content="${
+        this.schema['og:url']?.content || this.schema.url
+      }">
+      <meta property="og:title" content="${this.schema['og:title']?.content}">
+      <meta property="og:description" content="${
+        this.schema['og:description']?.content
+      }">
+      <meta property="og:image" content="${
+        this.schema['code_og:image']?.content
+      }">
       `
     },
     getTwitterTags() {
       return `
       <!--Twitter metatags-->
       <meta property="twitter:card" content="summary_large_image">
-      <meta property="twitter:url" content="https://metatags.io/">
-      <meta property="twitter:title" content="Meta Tags — Preview, Edit and Generate">
-      <meta property="twitter:description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!">
-      <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+      <meta property="twitter:url" content="${
+        this.schema['twitter:url']?.content || this.schema.url
+      }">
+      <meta property="twitter:title" content="${
+        this.schema['twitter:title']?.content
+      }">
+      <meta property="twitter:description" content="${
+        this.schema['twitter:description']?.content
+      }">
+      <meta property="twitter:image" content="${
+        this.schema['code_twitter:image']?.content
+      }">
       `
     },
     getMetaData() {
       return `
       <!--Metadata-->
-      <meta name="title" content="Meta Tags — Preview, Edit and Generate">
-      <meta name="description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!">
-
+      <meta name="title" content="${this.schema.title}">
+      <meta name="description" content="${this.schema.description.content}">
       `
     },
   },

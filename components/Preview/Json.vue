@@ -18,16 +18,24 @@
 
 <script>
 export default {
+  props: {
+    schema: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
   computed: {
     getJSONData() {
       return `
       head: {
-        title: 'my website title',
+        title: '${this.schema.title}',
         meta: [
           {
             hid: 'description',
             name: 'description',
-            content: 'my website description'
+            content: '${this.schema.description?.content}'
           },
           {
             property: 'twitter:card',
@@ -35,19 +43,39 @@ export default {
           },
           {
             property: 'twitter:url',
-            content: 'https://metatags.io/'
+            content: '${this.schema.url}'
           },
           {
             property: 'twitter:title',
-            content: 'https://metatags.io/'
+            content: '${this.schema['twitter:title']?.content}'
           },
           {
             property: 'twitter:description',
-            content: 'https://metatags.io/'
+            content: '${this.schema['twitter:description']?.content}'
           },
           {
-            property: 'twitter:description',
-            content: 'https://metatags.io/'
+            property: 'twitter:image',
+            content: '${this.schema['code_twitter:image']?.content}'
+          },
+          {
+            property: 'og:type',
+            content: 'website'
+          },
+          {
+            property: 'og:url',
+            content: '${this.schema.url}'
+          },
+          {
+            property: 'og:title',
+            content: '${this.schema['og:title']?.content}'
+          },
+          {
+            property: 'og:description',
+            content: '${this.schema['og:description']?.content}'
+          },
+          {
+            property: 'og:image',
+            content: '${this.schema['code_og:image']?.content}'
           },
         ],
       }

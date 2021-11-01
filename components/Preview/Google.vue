@@ -1,19 +1,21 @@
 <template>
   <preview-card heading-text="Google" :has-layout="false">
-    <h1 class="text-blue-600 text-xl">Preview and Generate</h1>
+    <h1 class="text-blue-600 text-xl">{{ getSchema.title }}</h1>
     <span class="inline-flex text-green-600 text-xs w-auto">
-      https://www.metacheck.com
+      {{ getSchema.url }}
     </span>
     <br />
     <p class="text-gray-300 text-sm">
-      Metacheck is a free open-source tool for generating/checking metatags and
-      metadata for webpages
+      {{ getSchema.description.content }}
     </p>
   </preview-card>
 </template>
 
 <script>
-export default {}
+import schema from '~/assets/mixins/fetchMetaSchema'
+export default {
+  mixins: [schema],
+}
 </script>
 
 <style></style>

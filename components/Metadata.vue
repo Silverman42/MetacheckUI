@@ -18,41 +18,65 @@
     <form id="generateMeta" action="" @submit.prevent="generateMetadata"></form>
     <div class="my-8">
       <input-container label="Title">
-        <input-base v-model="title" form="generateMeta"></input-base>
+        <input-base
+          :value="getMetaData.title"
+          @input="changeTitle($event)"
+        ></input-base>
       </input-container>
     </div>
     <div class="my-8">
       <input-container label="Description">
         <input-textarea
-          v-model="description"
-          form="generateMeta"
+          :value="getMetaData.description"
+          @input="changeDescription($event)"
         ></input-textarea>
       </input-container>
     </div>
     <div class="my-8">
       <input-container label="Image">
-        <input-file @input="getImage($event)"></input-file>
+        <input-file @input="changeImage($event)"></input-file>
       </input-container>
-    </div>
-    <div class="my-8">
-      <action-button form="generateMeta" type="submit">Generate</action-button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      title: '',
-      description: '',
-      image: '',
-    }
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    description: {
+      type: String,
+      default: '',
+    },
+    image: {
+      type: String,
+      default: '',
+    },
+  },
+  computed: {
+    getMetaData() {
+      return {
+        title: this.title,
+        description: this.description,
+      }
+    },
   },
   methods: {
-    generateMetadata() {},
-    getImage($event) {
-      console.log($event)
+    changeDescription(event) {
+      this.$emit('changeDescription', event)
+    },
+    changeTitle(event) {
+      this.$emit('changeTitle', event)
+    },
+    changeImage(event) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        this.$emit('changeImage', e.target.result)
+      }
+      reader.readAsDataURL(event)
     },
   },
 }

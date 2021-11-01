@@ -1,7 +1,7 @@
 <template>
   <preview-card heading-text="Twitter">
     <img
-      src="/screenshot.png"
+      :src="getSchema.image"
       class="h-60 w-full object-cover object-center"
       alt=""
     />
@@ -14,11 +14,10 @@
           overflow-hidden overflow-ellipsis
         "
       >
-        Metacheck - Generating and checking metatags
+        {{ getSchema.title }}
       </h3>
       <p class="text-xs text-gray-400 block overflow-hidden overflow-ellipsis">
-        Metacheck is a free open-source tool for generating/checking metatags
-        and metadata for webpages
+        {{ getSchema.description }}
       </p>
       <span
         class="
@@ -28,14 +27,29 @@
           block
           overflow-hidden overflow-ellipsis
         "
-        >Metacheck.io</span
+        >{{ getSchema.url }}</span
       >
     </div>
   </preview-card>
 </template>
 
 <script>
-export default {}
+import schema from '~/assets/mixins/fetchMetaSchema'
+export default {
+  mixins: [schema],
+  computed: {
+    getSchema() {
+      return {
+        url: this.schema.url,
+        image: this.schema['twitter:image']?.content,
+        description:
+          this.schema['twitter:description']?.content ||
+          this.schema.description?.content,
+        title: this.schema['twitter:title']?.content || this.schema.title,
+      }
+    },
+  },
+}
 </script>
 
 <style></style>

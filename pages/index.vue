@@ -6,6 +6,7 @@
       <action-button
         type="submit"
         form="urlForm"
+        :loading="loading"
         :has-full-width="false"
         size="xs"
       >
@@ -14,7 +15,13 @@
     </navbar>
     <div class="dark:bg-primaryBg min-h-screen">
       <div class="section-container">
-        <metadata />
+        <metadata
+          :title="title"
+          :description="metaSchema.description.content"
+          @changeDescription="setDescription($event)"
+          @changeTitle="setTitle($event)"
+          @changeImage="setImage($event)"
+        />
         <section class="channel-section">
           <div class="mb-10">
             <section-header>Channels</section-header>
@@ -27,28 +34,38 @@
                 <template #tab-body-webview>
                   <preview-google
                     v-if="filteredChannels.hasOwnProperty('google')"
+                    :schema="{ ...metaSchema, ...extraSchema }"
                   />
                   <preview-facebook
                     v-if="filteredChannels.hasOwnProperty('facebook')"
+                    :schema="{ ...metaSchema, ...extraSchema }"
                   />
                   <preview-twitter
                     v-if="filteredChannels.hasOwnProperty('twitter')"
+                    :schema="{ ...metaSchema, ...extraSchema }"
                   />
                   <preview-linkedin
                     v-if="filteredChannels.hasOwnProperty('linkedin')"
+                    :schema="{ ...metaSchema, ...extraSchema }"
                   />
                   <preview-pintrest
                     v-if="filteredChannels.hasOwnProperty('pinterest')"
+                    :schema="{ ...metaSchema, ...extraSchema }"
                   />
                   <preview-slack
                     v-if="filteredChannels.hasOwnProperty('slack')"
+                    :schema="{ ...metaSchema, ...extraSchema }"
                   />
                 </template>
                 <template #tab-body-code>
-                  <preview-code></preview-code>
+                  <preview-code
+                    :schema="{ ...metaSchema, ...extraSchema }"
+                  ></preview-code>
                 </template>
                 <template #tab-body-json>
-                  <preview-json></preview-json>
+                  <preview-json
+                    :schema="{ ...metaSchema, ...extraSchema }"
+                  ></preview-json>
                 </template>
               </tab>
             </div>
@@ -63,6 +80,7 @@
 <script>
 import 'vue-custom-scrollbar/dist/vueScrollbar.css'
 import { SearchIcon } from 'vue-feather-icons'
+import defaultSchema from '~/assets/defaultMetaSchema'
 export default {
   components: {
     SearchIcon,
@@ -72,11 +90,20 @@ export default {
       tabs: ['webview', 'code', 'json'],
       defaultTab: 'webview',
       filteredChannels: {},
+      title: '',
       url: 'http://sundev.netlify.app',
       loading: false,
+      metaSchema: { ...defaultSchema },
     }
   },
-  computed: {},
+  computed: {
+    extraSchema() {
+      return {
+        title: this.title,
+        url: this.url,
+      }
+    },
+  },
   mounted() {
     this.setDarkMode()
     this.getMetaData()
@@ -108,10 +135,43 @@ export default {
     },
     getMetaData() {
       this.loading = true
-      this.$axios.get(`/api/fetch?url=${this.url}`).then((response) => {
-        this.loading = false
-        console.log(response.data)
-      })
+      this.$axios
+        .get(`/api/fetch?url=${this.url}`)
+        .then((response) => {
+          this.loading = false
+          this.structureResponse(response.data)
+        })
+        .catch(() => {
+          this.loading = false
+        })
+    },
+    structureResponse(response) {
+      this.title = response?.pageTitle
+      for (const data of response.data) {
+        if (data.name === null && data.property === null) {
+          continue
+        }
+        this.metaSchema[data.name || data.property] = data
+      }
+      // sync meta image for webview with meta image for code view
+      this.metaSchema['code_og:image'].content =
+        this.metaSchema['og:image'].content
+      this.metaSchema['code_twitter:image'].content =
+        this.metaSchema['twitter:image'].content
+    },
+    setDescription(description = '') {
+      this.metaSchema.description.content = description
+      this.metaSchema['og:description'].content = description
+      this.metaSchema['twitter:description'].content = description
+    },
+    setTitle(title = '') {
+      this.title = title
+      this.metaSchema['twitter:title'].content = title
+      this.metaSchema['og:title'].content = title
+    },
+    setImage(imageUrl = '') {
+      this.metaSchema['og:image'].content = imageUrl
+      this.metaSchema['twitter:image'].content = imageUrl
     },
   },
 }

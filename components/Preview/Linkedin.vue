@@ -1,7 +1,7 @@
 <template>
   <preview-card heading-text="Linkedin">
     <img
-      src="/screenshot.png"
+      :src="getSchema.image"
       class="h-60 w-full object-cover object-center"
       alt=""
     />
@@ -14,7 +14,7 @@
           overflow-hidden overflow-ellipsis
         "
       >
-        Metacheck - Generating and checking metatags
+        {{ getSchema.title }}
       </h3>
       <span
         class="
@@ -24,14 +24,26 @@
           block
           overflow-hidden overflow-ellipsis
         "
-        >Metacheck.io</span
+        >{{ getSchema.url }}</span
       >
     </div>
   </preview-card>
 </template>
 
 <script>
-export default {}
+import schema from '~/assets/mixins/fetchMetaSchema'
+export default {
+  mixins: [schema],
+  computed: {
+    getSchema() {
+      return {
+        url: this.schema.url,
+        image: this.schema['og:image']?.content,
+        title: this.schema['og:title']?.content || this.schema.title,
+      }
+    },
+  },
+}
 </script>
 
 <style></style>
