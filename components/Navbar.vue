@@ -51,7 +51,10 @@
           >
         </li>
         <li>
-          <a class="dark:text-primary-100 dark:hover:text-primary-300" href="#"
+          <a
+            class="dark:text-primary-100 dark:hover:text-primary-300"
+            target="_blank"
+            href="https://github.com/Silverman42/MetacheckUI"
             >Github</a
           >
         </li>

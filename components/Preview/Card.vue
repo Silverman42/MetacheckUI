@@ -1,6 +1,7 @@
 <template>
   <div class="mb-14 cursor-pointer">
     <span
+      v-if="hasHeading === true"
       class="
         inline-block
         w-auto
@@ -13,7 +14,7 @@
         dark:border-gray-800
       "
     >
-      <span v-if="hasHeading === true" class="card-heading mb-0">
+      <span class="card-heading mb-0">
         {{ headingText }}
       </span>
     </span>

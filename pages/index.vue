@@ -29,7 +29,10 @@
           </div>
           <div>
             <section-header>Preview</section-header>
-            <div>
+            <div v-if="loading">
+              <skeleton-preview />
+            </div>
+            <div v-else>
               <tab :tabs="tabs" :default-active-tab="defaultTab">
                 <template #tab-body-webview>
                   <preview-google
@@ -116,6 +119,11 @@ export default {
         localStorage.removeItem('theme')
       }
     },
+    resetMetaSchema() {
+      this.setDescription('')
+      this.setTitle('')
+      this.setImage('')
+    },
     setDarkMode() {
       if (
         localStorage.theme === 'dark' ||
@@ -135,6 +143,7 @@ export default {
     },
     getMetaData() {
       this.loading = true
+      this.resetMetaSchema()
       this.$axios
         .get(`/api/fetch?url=${this.url}`)
         .then((response) => {

@@ -45,3 +45,9 @@
 .btn-block{
     @apply w-full
 }
+
+.spinner{
+    border-right-color: transparent !important;
+    border-left-color: transparent !important;
+    @apply block w-4 h-4 border-2 rounded-full animate-spin dark:border-white;
+}

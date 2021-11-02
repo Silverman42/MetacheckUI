@@ -1,0 +1,52 @@
+<template>
+  <preview-card :has-heading="false">
+    <div class="w-full p-4">
+      <span
+        class="
+          block
+          mb-3
+          p-5
+          animate-pulse
+          rounded-full
+          w-20
+          dark:bg-primaryBg3
+        "
+      ></span>
+      <span
+        class="
+          block
+          mb-3
+          animate-pulse
+          p-2
+          rounded-full
+          w-4/12
+          dark:bg-primaryBg3
+        "
+      ></span>
+      <span
+        class="
+          block
+          mb-3
+          animate-pulse
+          p-4
+          rounded-full
+          w-9/12
+          dark:bg-primaryBg3
+        "
+      ></span>
+      <span
+        class="
+          block
+          mb-3
+          animate-pulse
+          p-4
+          rounded-full
+          w-6/12
+          dark:bg-primaryBg3
+        "
+      ></span>
+    </div>
+  </preview-card>
+</template>
+
+<style></style>

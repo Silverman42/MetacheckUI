@@ -20,8 +20,11 @@
     :form="form"
     @click="trigger($event)"
   >
-    <slot name="icon"></slot>
-    <slot>Button</slot>
+    <span v-if="loading === false">
+      <slot name="icon"></slot>
+      <slot>Button</slot>
+    </span>
+    <span v-else class="spinner"> </span>
   </button>
 </template>
 <script>

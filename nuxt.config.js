@@ -9,17 +9,66 @@ export default {
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
+
   head: {
     htmlAttrs: {
       lang: 'en',
     },
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
+    title: 'MetaCheck',
     meta: [
       { name: 'theme-color', content: '#115f57' },
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Metacheck is a free open-source tool for generating/checking metatags and metadata for webpages ',
+      },
+      {
+        property: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        property: 'twitter:url',
+        content: 'https://metacheckui.netlify.app/',
+      },
+      {
+        property: 'twitter:title',
+        content: 'Metacheck',
+      },
+      {
+        property: 'twitter:description',
+        content:
+          'Metacheck is a free open-source tool for generating/checking metatags and metadata for webpages ',
+      },
+      {
+        property: 'twitter:image',
+        content: 'https://metacheckui.netify.app/metaimage.png',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        property: 'og:url',
+        content: 'https://metacheckui.netlify.app/',
+      },
+      {
+        property: 'og:title',
+        content: 'Metacheck',
+      },
+      {
+        property: 'og:description',
+        content:
+          'Metacheck is a free open-source tool for generating/checking metatags and metadata for webpages ',
+      },
+      {
+        property: 'og:image',
+        content: 'https://metacheckui.netify.app/metaimage.png',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
