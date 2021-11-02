@@ -45,7 +45,7 @@ export default {
       },
       {
         property: 'twitter:image',
-        content: 'https://metacheckui.netify.app/metaimage.png',
+        content: 'https://metacheckui.netlify.app/metaimage.png',
       },
       {
         property: 'og:type',
@@ -66,7 +66,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: 'https://metacheckui.netify.app/metaimage.png',
+        content: 'https://metacheckui.netlify.app/metaimage.png',
       },
     ],
   },
