@@ -94,7 +94,7 @@ export default {
       defaultTab: 'webview',
       filteredChannels: {},
       title: '',
-      url: 'http://sundev.netlify.app',
+      url: 'http://metacheckui.netlify.app',
       loading: false,
       metaSchema: { ...defaultSchema },
     }
