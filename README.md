@@ -1,6 +1,8 @@
-# Metacheck
+<img src="/static/MetaCheck_single.svg" alt="metacheck logo" width="100"/> <br>
 
-Metacheck is a free open-source tool for generating/checking metatags and metadata for webpages
+## Metacheck UI
+
+Metacheck is a free open-source tool for generating/checking metatags and metadata for webpages. This repo contains the web frontend for MetaCheck. For the backend repository, visit <a href="https://github.com/silverman42/metacheck">here</a>
 
 ## Build Setup
 
